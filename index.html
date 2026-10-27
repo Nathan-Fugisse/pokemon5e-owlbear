@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pokémon 5e Companion</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="brand"><div class="ball">●</div><div><h1>Pokémon 5e</h1><p>Companion para Owlbear Rodeo</p></div></div><span id="connection" class="pill">Modo local</span></header>
+<nav><button class="tab active" data-tab="dex">Pokédex</button><button class="tab" data-tab="moves">Golpes</button><button class="tab" data-tab="items">Itens</button><button class="tab" data-tab="features">Características</button><button class="tab" data-tab="trainers">Treinadores</button><button class="tab" data-tab="rules">Regras</button></nav>
+<main><section class="toolbar"><input id="search" type="search" placeholder="Pesquisar nome…" autocomplete="off"><select id="sort"><option value="az">Nome A–Z</option><option value="za">Nome Z–A</option></select><span id="count"></span></section>
+<div class="layout"><section id="results" class="results" aria-live="polite"></section><aside class="detail"><div class="detail-head"><span class="eyebrow">DETALHES</span><h2 id="detail-title">Selecione um registro</h2></div><div id="detail-body" class="detail-body"><p>Pesquise o catálogo e selecione um registro para ver os dados disponíveis.</p></div><div class="token-tools"><h3>Vincular ao token</h3><p>Selecione um token no mapa e associe o registro escolhido.</p><button id="link-token" class="primary" disabled>Vincular ao token selecionado</button><button id="refresh-token" class="secondary">Verificar seleção</button><div id="token-status" class="status">Aguardando conexão com o Owlbear…</div></div></aside></div>
+</main><footer><span>Pokémon 5e Companion · protótipo 0.1.0</span><span>Dados recuperados do pacote fornecido</span></footer>
+<script type="module" src="app.js"></script>
+</body></html>

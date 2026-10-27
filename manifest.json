@@ -1,0 +1,16 @@
+{
+  "name": "Pokémon 5e Companion",
+  "version": "0.1.1",
+  "manifest_version": 1,
+  "description": "Consulte o catálogo Pokémon 5e e associe registros a tokens no Owlbear Rodeo.",
+  "icon": "/assets/icon.svg",
+  "author": "Pokémon 5e Companion",
+  "homepage_url": "https://github.com/MissingGlitch/pokemon5e-foundry-module",
+  "action": {
+    "title": "Pokémon 5e",
+    "icon": "/assets/icon.svg",
+    "popover": "/index.html",
+    "width": 1100,
+    "height": 760
+  }
+}
