@@ -1,28 +1,32 @@
-# Pokémon 5e Companion para Owlbear Rodeo — v0.2.0
+# Pokémon 5e Companion para Owlbear Rodeo — v0.3.0
 
-Extensão estática para hospedar na Vercel. Esta versão corrige problemas comuns de abas e carregamento: inicialização da interface não depende do SDK do Owlbear, requisições da PokéAPI têm timeout, listas são paginadas e erros exibem opção de tentar novamente.
+Extensão estática para a Vercel, com interface em português e ficha editável de Pokémon 5e inspirada nas categorias e no fluxo público de gerenciamento do [Pokémon 5e Reference](https://poke5e.app/pt/). Não é afiliada ao site e não reproduz integralmente seu código nem seu banco de dados.
 
-## Recursos implementados
-- Pokédex nacional consultada dinamicamente na PokéAPI, com imagens oficiais, tipos, altura, peso, habilidades e atributos-base dos jogos.
-- Abas de Golpes, Itens e Habilidades com pesquisa, paginação e painel de detalhes.
-- Aba de ferramentas de treinador com checklist de encontro e notas temporárias.
-- Referência de tipos e explicação de compatibilidade.
-- Integração básica com Owlbear Rodeo: associa Pokémon selecionado aos tokens selecionados usando metadados `com.pokemon5e.companion`.
-- Timeout de rede, mensagens de erro e tentativa de recuperação; a interface não deve ficar presa indefinidamente num indicador de carregamento.
+## Ficha Pokémon 5e
+- Criação de ficha a partir de um Pokémon selecionado na Pokédex.
+- Identidade: espécie, apelido, treinador, nível, experiência, edição 2018/2024, natureza, habilidade, item segurado e tipos.
+- Combate: PV atuais/máximos/temporários, CA, deslocamento, iniciativa, proficiência, vínculo e condições.
+- Seis atributos editáveis com cálculo automático dos modificadores.
+- Quatro espaços de golpes, traços, inventário, notas e estado de desmaio.
+- Salvamento automático local no navegador, backup JSON de exportação/importação e sincronização da ficha nos metadados dos tokens selecionados do Owlbear.
+- Importação da ficha armazenada em metadados de token para outro navegador/cliente, quando o token e seus metadados forem acessíveis na sala.
 
-## Instalar/atualizar na Vercel
-1. Extraia o ZIP. Importe a pasta para seu repositório ou substitua os arquivos da implantação atual.
-2. Faça deploy como projeto estático, sem build command e com a raiz do projeto apontando para esta pasta.
-3. Confirme que `https://SEU-PROJETO.vercel.app/manifest.json` abre um JSON.
-4. No Owlbear Rodeo, adicione/atualize a extensão usando essa URL de manifesto. Use sempre o mesmo endereço de manifesto nas atualizações.
+## Dados e precisão
+A PokéAPI fornece dados dos jogos oficiais (tipos, imagens, habilidades, etc.), não os valores de ficha de Pokémon 5e. Por isso, campos de regras como PV, CA, nível, atributos, golpes e vínculo são editáveis e não são inventados a partir dos atributos dos jogos. A extensão não automatiza ainda todas as regras, progressão, captura, condições, dano ou evolução do site de referência. Confirme cálculos e valores com a edição de regras usada pela sua mesa.
 
-## Limites importantes
-Esta é uma extensão companion, não uma conversão integral do módulo Foundry. A PokéAPI contém dados dos jogos oficiais, não fichas de Pokémon 5e. O campo de metadados `sheet5e` está preparado, mas fichas completas, compêndios de Pokémon 5e, classes/subclasses de treinadores, itens específicos do sistema, regras de combate e automações de progressão ainda precisam ser portados do módulo de origem. A aba de notas não sincroniza nem persiste dados entre sessões.
+## Publicar
+1. Extraia o ZIP e publique o conteúdo da pasta como projeto estático na Vercel.
+2. Sem comando de build; diretório raiz deve conter `manifest.json`, `index.html`, `app.js`, `style.css` e `vercel.json`.
+3. Verifique `https://SEU-PROJETO.vercel.app/manifest.json`.
+4. Adicione/atualize a extensão no Owlbear Rodeo com essa URL. Use a mesma URL de manifesto em atualizações futuras.
 
-## Verificação
-Os arquivos são estáticos e o JavaScript deve ser validado antes do deploy. O projeto não foi publicado na sua conta Vercel nem testado dentro da sua sala Owlbear; por isso, não é possível garantir o comportamento real da implantação sem executar esse teste no ambiente.
+## Sincronização
+As fichas são salvas no armazenamento local deste navegador. Ao clicar em **Sincronizar com token**, a ficha é gravada em `metadata.com.pokemon5e.companion.sheet5e` nos tokens selecionados e vinculados. Para recuperar em outro cliente, selecione o token e use **Importar ficha do token**. O SDK do Owlbear e as permissões da sala precisam estar disponíveis; não existe servidor externo de conta/backup automático nesta versão.
 
-## Fontes de dados
+## Fontes e atribuição
+- Referência pública Pokémon 5e: https://poke5e.app/pt/
+- Repositório da referência: https://github.com/Auroratide/poke5e
 - PokéAPI: https://pokeapi.co/
-- SDK Owlbear Rodeo: https://docs.owlbear.rodeo/
-- Módulo Foundry de referência: https://github.com/Jerakin/p5e-foundryVTT
+- Owlbear Rodeo SDK: https://docs.owlbear.rodeo/
+
+O site de referência descreve as edições 2018 e 2024; a edição 2024 é a atual segundo sua página de configurações. A ficha inclui o seletor de edição, mas não aplica automaticamente todas as diferenças de regra.
