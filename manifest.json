@@ -1,8 +1,8 @@
 {
   "name": "Pokémon 5e Companion",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "manifest_version": 1,
-  "description": "Pokédex nacional com imagens e dados, preparada para anexar fichas Pokémon 5e.",
+  "description": "Pokédex com carregamento resiliente, pesquisa paginada, detalhes de golpes/itens/habilidades e vínculo básico com tokens do Owlbear Rodeo.",
   "icon": "/assets/icon.svg",
   "author": "Pokémon 5e Companion",
   "homepage_url": "https://github.com/PokeAPI/pokeapi",

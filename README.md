@@ -1,23 +1,28 @@
-# Pokémon 5e Companion — Owlbear Rodeo v0.1.3
+# Pokémon 5e Companion para Owlbear Rodeo — v0.2.0
 
-## Deploy na Vercel
-Projeto estático, sem backend e sem comando de build.
+Extensão estática para hospedar na Vercel. Esta versão corrige problemas comuns de abas e carregamento: inicialização da interface não depende do SDK do Owlbear, requisições da PokéAPI têm timeout, listas são paginadas e erros exibem opção de tentar novamente.
 
-1. Extraia o ZIP.
-2. Importe os arquivos em um projeto Vercel (a raiz deve conter `manifest.json`, `index.html`, `app.js` e `vercel.json`).
-3. Faça o deploy.
-4. Abra `https://SEU-PROJETO.vercel.app/manifest.json` para conferir o manifesto público.
-5. No Owlbear Rodeo, abra Extensions → Add Extension e cole essa URL.
-6. Ao atualizar o projeto na Vercel, mantenha o mesmo nome/domínio e URL do manifesto; o Owlbear continuará apontando para o mesmo manifesto.
+## Recursos implementados
+- Pokédex nacional consultada dinamicamente na PokéAPI, com imagens oficiais, tipos, altura, peso, habilidades e atributos-base dos jogos.
+- Abas de Golpes, Itens e Habilidades com pesquisa, paginação e painel de detalhes.
+- Aba de ferramentas de treinador com checklist de encontro e notas temporárias.
+- Referência de tipos e explicação de compatibilidade.
+- Integração básica com Owlbear Rodeo: associa Pokémon selecionado aos tokens selecionados usando metadados `com.pokemon5e.companion`.
+- Timeout de rede, mensagens de erro e tentativa de recuperação; a interface não deve ficar presa indefinidamente num indicador de carregamento.
 
-## Pokédex
-A lista nacional é carregada do endpoint `https://pokeapi.co/api/v2/pokemon-species?limit=2000&offset=0`. Ao selecionar um Pokémon, a extensão busca detalhes em `/pokemon/{id}` e `/pokemon-species/{id}`: imagem oficial, tipos, altura, peso, habilidades, atributos-base e alguns dados de espécie. Os detalhes são buscados sob demanda para não fazer mais de mil requisições simultâneas. A lista nacional é atualizada automaticamente conforme a PokéAPI atualiza o endpoint.
+## Instalar/atualizar na Vercel
+1. Extraia o ZIP. Importe a pasta para seu repositório ou substitua os arquivos da implantação atual.
+2. Faça deploy como projeto estático, sem build command e com a raiz do projeto apontando para esta pasta.
+3. Confirme que `https://SEU-PROJETO.vercel.app/manifest.json` abre um JSON.
+4. No Owlbear Rodeo, adicione/atualize a extensão usando essa URL de manifesto. Use sempre o mesmo endereço de manifesto nas atualizações.
 
-## Fichas Pokémon 5e
-Cada entrada possui `id` (número nacional estável) e `sheet5e: null`. No futuro, um arquivo de fichas pode mapear `nationalDex`/`id` para a ficha de jogo, sem cadastrar os Pokémon de novo. Os atributos-base mostrados agora são os dos jogos oficiais e não são tratados como estatísticas de Pokémon 5e.
+## Limites importantes
+Esta é uma extensão companion, não uma conversão integral do módulo Foundry. A PokéAPI contém dados dos jogos oficiais, não fichas de Pokémon 5e. O campo de metadados `sheet5e` está preparado, mas fichas completas, compêndios de Pokémon 5e, classes/subclasses de treinadores, itens específicos do sistema, regras de combate e automações de progressão ainda precisam ser portados do módulo de origem. A aba de notas não sincroniza nem persiste dados entre sessões.
 
-## Abas
-Pokédex, golpes, itens e habilidades usam a PokéAPI. As abas de treinadores e regras estão preparadas como áreas da interface, mas ainda precisam receber conteúdo específico do sistema.
+## Verificação
+Os arquivos são estáticos e o JavaScript deve ser validado antes do deploy. O projeto não foi publicado na sua conta Vercel nem testado dentro da sua sala Owlbear; por isso, não é possível garantir o comportamento real da implantação sem executar esse teste no ambiente.
 
-## Créditos
-Dados e imagens consultados da PokéAPI e do repositório PokeAPI Sprites. Pokémon e nomes relacionados são marcas de seus respectivos titulares. Esta extensão é comunitária, não oficial e não afiliada à Nintendo, The Pokémon Company, PokéAPI ou Owlbear Rodeo.
+## Fontes de dados
+- PokéAPI: https://pokeapi.co/
+- SDK Owlbear Rodeo: https://docs.owlbear.rodeo/
+- Módulo Foundry de referência: https://github.com/Jerakin/p5e-foundryVTT
