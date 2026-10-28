@@ -1,8 +1,8 @@
 {
   "name": "Pokémon 5e Companion",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "manifest_version": 1,
-  "description": "Fichas Pokémon 5e em português, edição 2018/2024, golpes, atributos, backup e sincronização com tokens do Owlbear Rodeo.",
+  "description": "Fichas Pokémon 5e, rolagens de combate, golpes, backup JSON e sincronização com tokens Owlbear.",
   "icon": "/assets/icon.svg",
   "author": "Pokémon 5e Companion",
   "homepage_url": "https://github.com/PokeAPI/pokeapi",
