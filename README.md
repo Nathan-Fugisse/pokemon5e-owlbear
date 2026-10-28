@@ -1,25 +1,23 @@
-# Pokémon 5e Companion — Owlbear Rodeo (protótipo 0.1.1)
+# Pokémon 5e Companion — Owlbear Rodeo v0.1.3
 
 ## Deploy na Vercel
+Projeto estático, sem backend e sem comando de build.
 
-Este projeto é estático e não precisa de build nem de backend.
+1. Extraia o ZIP.
+2. Importe os arquivos em um projeto Vercel (a raiz deve conter `manifest.json`, `index.html`, `app.js` e `vercel.json`).
+3. Faça o deploy.
+4. Abra `https://SEU-PROJETO.vercel.app/manifest.json` para conferir o manifesto público.
+5. No Owlbear Rodeo, abra Extensions → Add Extension e cole essa URL.
+6. Ao atualizar o projeto na Vercel, mantenha o mesmo nome/domínio e URL do manifesto; o Owlbear continuará apontando para o mesmo manifesto.
 
-1. Extraia este ZIP ou envie-o pelo Vercel Drop.
-2. Se a Vercel pedir configurações, use a raiz do projeto como diretório e deixe o build command vazio.
-3. Depois do deploy, abra `https://SEU-PROJETO.vercel.app/manifest.json` no navegador.
-4. Copie essa URL completa.
-5. No Owlbear Rodeo, vá ao perfil → Extensions → Add Extension e cole a URL do manifesto.
-6. Entre numa sala e habilite a extensão.
+## Pokédex
+A lista nacional é carregada do endpoint `https://pokeapi.co/api/v2/pokemon-species?limit=2000&offset=0`. Ao selecionar um Pokémon, a extensão busca detalhes em `/pokemon/{id}` e `/pokemon-species/{id}`: imagem oficial, tipos, altura, peso, habilidades, atributos-base e alguns dados de espécie. Os detalhes são buscados sob demanda para não fazer mais de mil requisições simultâneas. A lista nacional é atualizada automaticamente conforme a PokéAPI atualiza o endpoint.
 
-## Arquivos importantes
-- `manifest.json`: manifesto de extensão Owlbear, versão 1.
-- `index.html`, `style.css`, `app.js`: interface e integração inicial com o SDK.
-- `data/catalog.json`: catálogo recuperado do repositório.
-- `assets/icon.svg`: ícone.
-- `vercel.json`: cabeçalhos para manifesto e catálogo JSON.
+## Fichas Pokémon 5e
+Cada entrada possui `id` (número nacional estável) e `sheet5e: null`. No futuro, um arquivo de fichas pode mapear `nationalDex`/`id` para a ficha de jogo, sem cadastrar os Pokémon de novo. Os atributos-base mostrados agora são os dos jogos oficiais e não são tratados como estatísticas de Pokémon 5e.
 
-## Limitações
-Este é um protótipo, não uma conversão completa do módulo Foundry. O catálogo contém registros completos e índices parciais; entradas parciais não possuem todas as estatísticas. A integração com tokens deve ser validada numa sala Owlbear real. Não é oficial nem afiliado ao Owlbear Rodeo ou aos autores do módulo original.
+## Abas
+Pokédex, golpes, itens e habilidades usam a PokéAPI. As abas de treinadores e regras estão preparadas como áreas da interface, mas ainda precisam receber conteúdo específico do sistema.
 
 ## Créditos
-Consulte `LICENSE` e `UPSTREAM-README.html`. O módulo original Pokémon 5e para Foundry VTT é de Moge e Missing Glitch.
+Dados e imagens consultados da PokéAPI e do repositório PokeAPI Sprites. Pokémon e nomes relacionados são marcas de seus respectivos titulares. Esta extensão é comunitária, não oficial e não afiliada à Nintendo, The Pokémon Company, PokéAPI ou Owlbear Rodeo.
